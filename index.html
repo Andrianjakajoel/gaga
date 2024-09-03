@@ -5,41 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page avec image de fond</title>
     <style>
-        /* Assurez-vous que le corps occupe toute la hauteur et largeur */
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+      /* Assurer que la taille du conteneur est proportionnelle à l'image de fond */
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 68%; /* Aspect ratio de l'image de fond (700/1024*100) */
+  background-image: url('ton-image-arriere-plan.jpg');
+  background-size: cover; /* Couvrir toute la taille du conteneur */
+  background-position: center;
+}
 
-        /* Style pour l'image de fond */
-        .background-image {
-            background-image: url('img/a.PNG'); /* Chemin vers votre image */
-            background-size: cover; /* Ajuste l'image à la taille de l'écran */
-            background-position: center; /* Centre l'image */
-            background-repeat: no-repeat; /* Évite la répétition de l'image */
-            height: 100%;
-            width: 100%;
-            position: relative;
-        }
+/* Le conteneur pour le contenu */
+.seat-container {
+  position: absolute;
+  top: 40%; /* Position verticale en pourcentage du conteneur de fond */
+  left: 50%; /* Position horizontale en pourcentage du conteneur de fond */
+  transform: translate(-50%, -50%); /* Centrage basé sur le point d'ancrage */
+  width: 10%; /* Largeur en pourcentage du conteneur de fond */
+  height: auto; /* Hauteur ajustée pour respecter l'aspect ratio */
+  background-color: rgba(255, 255, 255, 0.8); /* Arrière-plan semi-transparent */
+  padding: 2%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-        /* Contenu que vous ajoutez à la page */
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-        }
+.item-image {
+  width: 80%; /* Image proportionnelle à la largeur du conteneur */
+  height: auto; /* Hauteur ajustée pour respecter les proportions */
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.item-name {
+  margin-top: 5%;
+  font-size: 2vw; /* Taille de la police relative à la largeur de la fenêtre */
+}
     </style>
 </head>
 <body>
-    <div class="background-image">
-        <div class="content">
-            <h1>Bienvenue sur ma page</h1>
-            <p>Voici un exemple de page avec une image de fond.</p>
+    <div class="background-container">
+        <img src="img/a.PNG" alt="Arrière-plan" class="background-image">
+        
+        <!-- Conteneur pour le siège -->
+        <div class="seat-container">
+          <img src="img/Untitled.png" alt="Image Profil" class="item-image">
+          <p class="item-name">Prénom</p>
         </div>
-    </div>
+      </div>
 </body>
 </html>
